@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<link rel="icon" href="logo.png" type="image/png">
+	<title>Vue JS</title>
+
+	<style type="text/css">
+		.color-red{
+			color:red;
+		}
+
+		.color-blue{
+			color:blue;
+		}
+
+		.is-loading{
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+
+<div id="root">
+
+	<!-- Single item -->
+	
+	<p>The value of input is {{ message }} </p>
+	<p>{{ reversedMessage }}</p>
+	
+	<input type="text" id="input-1" v-model="message">
+	
+	<br><hr><br>
+	
+	<!-- Foreach loop -->
+	
+	<li v-for="item in items" v-text="item"></li>
+	
+	<input type="text" id="input-2" v-model="newItem" @keyUp="addName">
+	
+	<button id="button" @click="addName">Add items</button>
+	
+	<br><hr><br>
+	
+	<!-- Attribute binding -->
+
+	<h1 v-bind:class="className">Random h1</h1> 
+	
+	<!-- <h1 :class="className">Same shit as row after</h1>  -->
+	
+	<button v-bind:title="title" @click="toggleClass" :class="{'is-loading' : isLoading}">Button with text</button>
+
+	<br><hr><br>
+
+	<!-- Computed properties -->
+
+	<h1>All tasks</h1>
+	
+	<ul>
+		<!-- <li v-for="task in tasks" v-text="task.description" v-if="task.completed"></li> -->
+		<li v-for="task in tasks" v-text="task.description"></li> 
+	</ul>
+
+	<h2>Incoplete tasks</h2>
+
+	<ul>
+		<li v-for="task in inCompleteTasks" v-text="task.description"></li>
+	</ul>
+
+	<br><hr><br>
+
+</div>
+
+
+<script src="https://unpkg.com/vue"></script>
+<script type="text/javascript">
+
+	var app = new Vue({
+		el:'#root',
+		data:{
+			message   : 'Hello world',
+			newItem   : '',
+			items     : ['Item 1', 'Item 2', 'Item 3'],
+			title	  : 'Vue JS title',
+			className : 'color-red',
+			isLoading : false,
+			tasks	  : [
+				{description : 'Task 1', completed:true},
+				{description : 'Task 2', completed:false},
+				{description : 'Task 3', completed:true},
+				{description : 'Task 4', completed:true},
+				{description : 'Task 5', completed:false},
+				{description : 'Task 6', completed:true},
+				{description : 'Task 7', completed:true}
+
+			] 
+		},
+		methods:{
+			
+			addName(){
+				this.items.push(this.newItem);
+			},
+
+			toggleClass(){
+				this.isLoading = true;
+			},
+
+		},
+		computed:{
+			
+			reversedMessage(){
+				return this.message.split('').reverse('').join('');
+			},
+
+			inCompleteTasks(){
+				return this.tasks.filter(task => ! task.completed);
+			}
+
+		},
+		mounted(){
+			console.log('document ready');
+		}
+	});
+
+</script>
+
+</body>
+</html>

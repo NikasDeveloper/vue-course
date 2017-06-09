@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<link rel="icon" href="../logo.png" type="image/png">
+	<title>Vue JS</title>
+
+	<style type="text/css">
+		.red{color:red;}
+		.blue{color:blue;}
+		.is-loading{background:green;}
+	</style>
+
+</head>
+<body>
+
+	<!-- ELEMENT AFFECTED BY VUE -->
+	<div id="root">
+
+	<!-- ATTRIBUTE TITLE BINDING SAME AS v-bind:title="title" -->
+	<button :title="title">BUTTON WITH BINDED TITLE ATTRIBUTE</button>
+
+	<!-- CLASS BINDING -->
+	<h1 :class="className">HEADING WITH BINDED CLASS</h1>
+
+
+	<!-- CLASS DYNAMIC -->
+	<button type="button" :class="{ 'is-loading' : isLoading }" @click="toogleLoading"> BTN WITH CONDITION CLASS </button>
+
+	<!-- DISABLE DYNAMIC -->
+	<button type="button" :disabled="isDisabled" @click="toogleDisabled"> BTN WITH CONDITION DISABLE </button>
+
+	</div>
+
+
+	<!--  Scripts  -->
+	<script src="https://unpkg.com/vue"></script>
+	<!--  VUE JS -->
+	<script type="text/javascript">
+
+		var app = new Vue({
+			el : '#root',
+			data: {
+				title 	   : 'Vue JS title',
+				className  : 'red',
+				isLoading  : false,
+				isDisabled : false,
+			},
+			methods:{
+				
+				toogleLoading(){
+					this.isLoading = true;
+				},
+				toogleDisabled(){
+					this.isDisabled = true;
+				}
+			},
+		});
+
+	</script>
+
+
+</body>
+</html>

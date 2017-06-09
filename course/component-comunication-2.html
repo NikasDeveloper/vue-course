@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<link rel="icon" href="../logo.png" type="image/png">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.min.css" type="text/css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>Vue JS</title>
+
+</head>
+<body>
+
+	<!-- ELEMENT AFFECTED BY VUE -->
+	<div id="root" class="container">
+
+		<coupon @applied="onCouponApplied"></coupon>
+		<h1 v-if="couponApplied">Coupon applied!
+		</h1>
+
+	</div>
+	
+
+	<!--  Scripts  -->
+	<script src="https://unpkg.com/vue"></script>
+	
+	<!--  VUE JS -->
+	<script type="text/javascript">
+
+	window.Event = new class{
+
+		constructor(){
+			this.vue = new Vue();
+		}
+
+		fire(event, data = null){
+			this.vue.$emit(event, data);
+		}
+
+		listen(event, callback){
+			this.vue.$on(event, callback);	
+		}
+
+
+	};
+
+	Vue.component('coupon',{
+		template :
+			'<div class="field">' +
+  				'<label class="label">Coupon</label>' +
+  				'<p class="control">' +
+    				'<input class="input" type="text" placeholder="Text input" @blur="onCouponApplied">' +
+  				'</p>' +
+			'</div>',
+		data(){
+			return {
+
+			}
+		},
+		created(){
+
+		},
+		methods : {
+			onCouponApplied(){
+				Event.fire('applied');
+			},
+		}
+	});
+
+	var app = new Vue({
+		el : '#root',
+		data: {
+			couponApplied : false
+		},
+		computed:{},
+		methods:{
+			onCouponApplied(){
+				this.couponApplied = true;
+			},
+		},
+		created(){
+			Event.listen('applied', () => alert('Handling it'));
+		}
+	});
+
+	</script>
+
+</body>
+</html>

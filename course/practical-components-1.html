@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<link rel="icon" href="../logo.png" type="image/png">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style> body{ padding-top: 40px; } </style>
+	<title>Vue JS</title>
+
+</head>
+<body>
+
+	<!-- ELEMENT AFFECTED BY VUE -->
+	<div id="root" class="container">
+		<nikas-message title="Hello World" body="Lorem ipsum dolor sit amet, consectetur adipiscing elit."></nikas-message>
+	</div>
+
+	<!--  Scripts  -->
+	<script src="https://unpkg.com/vue"></script>
+	
+	<!--  VUE JS -->
+	<script type="text/javascript">
+
+	Vue.component('nikas-message',{
+		data(){
+			return {
+				visible : true
+			}
+		},
+		props 	 : ['title', 'body'],
+		template :
+		'<article class="message" v-show="visible">' 					+ 
+			'<div class="message-header">'			  					+ 
+				'<p>{{title}}</p>' 					 					+
+				'<button class="delete" @click="hideMessage"></button>'	+
+			'</div>' 							   	 					+
+			'<div class="message-body">' 			 					+
+				'{{body}}'							 					+
+			'</div>'								 					+
+		'</article>',
+		methods:{
+			hideMessage(){
+				this.visible = false;
+			}
+		}
+	});
+
+	var app = new Vue({
+		el : '#root',
+		data: {},
+		computed:{},
+		methods:{},
+	});
+
+	</script>
+
+</body>
+</html>

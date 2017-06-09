@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<link rel="icon" href="../logo.png" type="image/png">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.min.css" type="text/css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>Vue JS</title>
+
+</head>
+<body>
+
+	<!-- ELEMENT AFFECTED BY VUE -->
+	<div id="root" class="container">
+
+		<progress-view inline-template>
+
+			<div>
+				<h1> Your progress through this course is {{ completionRate }} % </h1>
+				<p><a class="button is-primary" @click="completionRate += 10">Update comletion rate</a></p>
+			</div>
+
+		</progress-view>
+
+	</div>
+	
+
+	<!--  Scripts  -->
+	<script src="https://unpkg.com/vue"></script>
+	
+	<!--  VUE JS -->
+	<script type="text/javascript">
+
+	Vue.component('progress-view',{
+		data(){
+			return {
+				completionRate : 10
+			}
+		},
+		created(){
+
+		},
+		methods : {
+
+		}
+	});
+
+	var app = new Vue({
+		el : '#root',
+		data: {
+
+		},
+		computed:{
+
+		},
+		methods:{
+		
+		}
+	});
+
+	</script>
+
+</body>
+</html>

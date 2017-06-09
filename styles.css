@@ -1,0 +1,40 @@
+
+body{
+	margin: 0;
+	padding: 0;
+	background: #fafafa;;
+	font-family: sans-serif;
+}
+
+h1{
+	padding: 20px;
+	margin: 0;
+	font-weight: 300;
+}
+
+ul{
+	margin: 0;
+	padding: 0;
+}
+li{
+	list-style: none;
+}
+
+li a{
+	display: block;
+	padding: 20px;
+}
+
+li a:visited, li a{
+	color: #333;
+	text-decoration: none;
+	transition: background 0.3s;
+}
+
+li a:hover, li a:active{
+	background: #e6e6e6;
+}
+
+h1,li{
+	border-bottom: 1px solid #ccc;
+}

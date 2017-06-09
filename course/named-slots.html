@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<link rel="icon" href="../logo.png" type="image/png">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.min.css" type="text/css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>Vue JS</title>
+
+</head>
+<body>
+
+	<!-- ELEMENT AFFECTED BY VUE -->
+	<div id="root" class="container">
+
+		<modal>
+			<template slot="header">Slotteronied modal header</template>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem rerum sint magnam, beatae tempore molestias, quae blanditiis suscipit accusantium tempora, ut eum ab veritatis error velit architecto reiciendis dolore officia.
+			<template slot="footer">
+				<a class="button is-success">Changed button</a>
+	      		<a class="button">Changed button</a>
+			</template>
+		</modal>
+
+	</div>
+	
+
+	<!--  Scripts  -->
+	<script src="https://unpkg.com/vue"></script>
+	
+	<!--  VUE JS -->
+	<script type="text/javascript">
+
+	Vue.component('modal',{
+		template :`
+			<div class="modal is-active">
+			  <div class="modal-background"></div>
+			  <div class="modal-card">
+			    <header class="modal-card-head">
+			      <p class="modal-card-title">
+					<slot name="header"> Default modal header</slot>
+			      </p>
+			      <button class="delete"></button>
+			    </header>
+			    <section class="modal-card-body">
+			      <!-- Content ... -->
+			      <slot>Default modal content</slot>
+			    </section>
+			    <footer class="modal-card-foot">
+					<slot name="footer">
+						<a class="button is-success">Save changes</a>
+			      		<a class="button">Cancel</a>
+					</slot>
+			    </footer>
+			  </div>
+			</div>
+		`,
+		data(){
+			return {
+
+			}
+		},
+		created(){
+
+		},
+		methods : {
+
+		}
+	});
+
+	var app = new Vue({
+		el : '#root',
+		data: {
+
+		},
+		computed:{
+
+		},
+		methods:{
+		
+		}
+	});
+
+	</script>
+
+</body>
+</html>

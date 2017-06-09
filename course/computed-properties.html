@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<link rel="icon" href="../logo.png" type="image/png">
+	<title>Vue JS</title>
+
+	<style>
+		.completed{ color:green; }
+		.incompleted{ color: red; }
+	</style>
+
+</head>
+<body>
+
+	<!-- ELEMENT AFFECTED BY VUE -->
+	<div id="root">
+
+	<!-- PRINTING OUT COMPUTED PROPERTY reverseMessage -->
+	<h1> {{ reverseMessage }} </h1>
+
+	<!-- TASKS -->
+	<h1>All tasks</h1>
+	<ul><li v-for="task in tasks" :class="{ 'completed' : task.completed }"> {{ task.description }}</li></ul>
+
+	<h1>Incomplete tasks</h1>
+	<ul><li v-for="task in incompletTasks" :class="{ 'incompleted' : !task.completed }"> {{ task.description }}</li></ul>
+
+	</div>
+
+
+	<!--  Scripts  -->
+	<script src="https://unpkg.com/vue"></script>
+	
+	<!--  VUE JS -->
+	<script type="text/javascript">
+
+	var app = new Vue({
+		el : '#root',
+		data: {
+			message : 'Hello World!',
+			tasks 	: [
+				{ description : 'Task 1', completed:true  },
+				{ description : 'Task 2', completed:false },
+				{ description : 'Task 3', completed:true  },
+				{ description : 'Task 4', completed:true  },
+				{ description : 'Task 5', completed:false },
+				{ description : 'Task 6', completed:true  },
+				{ description : 'Task 7', completed:true  },
+			]
+		},
+		computed:{
+			reverseMessage(){
+				return this.message.split('').reverse('').join('');
+			},
+			incompletTasks(){
+				return this.tasks.filter(task => !task.completed);
+			}
+		},
+		methods:{
+
+		},
+	});
+
+	</script>
+
+</body>
+</html>

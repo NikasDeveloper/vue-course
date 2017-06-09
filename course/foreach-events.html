@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<link rel="icon" href="../logo.png" type="image/png">
+	<title>Vue JS</title>
+</head>
+<body>
+
+	<!-- ELEMENT AFFECTED BY VUE -->
+	<div id="root">
+
+		<!-- FOREACH LOOP -->
+
+		<h1> FOR LOOP </h1>
+		<ul>
+			<!-- V-FOR CHOOSE ITEM -->
+			<!-- V-TEXT OBJECT TEST OR YOU CAN DO IT IN {{ITEM.PROPERTY}} WAY -->
+			<li v-for="name in names">{{name}}</li >
+		</ul>
+
+		<!-- EVENT LISTENERS -->
+		<input type="text" id="input" v-model="newName">  <!-- v-model means you bind this element to property newName -->
+		<button type="button" @click="addName">ADD NAME</button> <!-- @event="method()" == v-on:click-->
+
+
+
+	</div>
+
+
+	<!--  Scripts  -->
+	<script src="https://unpkg.com/vue"></script>
+	<!--  VUE JS -->
+	<script type="text/javascript">
+		
+		// REGISTRATION OF VUE
+
+		var app = new Vue({
+			el : '#root',
+			data: {
+				newName: '',
+				names:[
+					'Person 1',
+
+					'Person 2',
+					'Person 3'
+				]
+			},
+			methods:{
+				addName(){
+					this.names.push(this.newName);
+					this.newName = '';
+				}
+			},
+		});
+
+	</script>
+
+
+</body>
+</html>

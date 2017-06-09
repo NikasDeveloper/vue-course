@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<link rel="icon" href="../logo.png" type="image/png">
+	<title>Vue JS</title>
+
+	<style>
+		.completed{ color:green; }
+		.incompleted{ color: red; }
+	</style>
+
+</head>
+<body>
+
+	<!-- ELEMENT AFFECTED BY VUE -->
+	<div id="root">
+	
+
+		<!-- TASKS -->
+		<task-list></task-list>
+	
+
+	</div>
+	
+
+	<!--  Scripts  -->
+	<script src="https://unpkg.com/vue"></script>
+	
+	<!--  VUE JS -->
+	<script type="text/javascript">
+
+	Vue.component('task-list',{
+		template : '<div><task v-for="task in tasks"> {{ task.description }} </task></div>',
+		data(){
+			return {	
+				tasks : [
+					{ description : 'Task 1', completed:true  },
+					{ description : 'Task 2', completed:false },
+					{ description : 'Task 3', completed:true  },
+					{ description : 'Task 4', completed:true  },
+					{ description : 'Task 5', completed:false },
+					{ description : 'Task 6', completed:true  },
+					{ description : 'Task 7', completed:true  },
+				]
+			}
+		}
+	});	
+
+	Vue.component('task',{
+		template : '<li><slot></slot></li>',
+	});
+
+	var app = new Vue({
+		el : '#root',
+		data: {},
+		computed:{},
+		methods:{},
+	});
+
+	</script>
+
+</body>
+</html>
